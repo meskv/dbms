@@ -1,7 +1,6 @@
 -- AFTER INSERT TRIGGER
 
 DROP TABLE IF EXISTS members;
-
 CREATE TABLE members (
     id INT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -11,7 +10,6 @@ CREATE TABLE members (
 );
 
 DROP TABLE IF EXISTS reminders;
-
 CREATE TABLE reminders (
     id INT AUTO_INCREMENT,
     memberId INT,
@@ -20,7 +18,6 @@ CREATE TABLE reminders (
 );
 
 DELIMITER $$
-
 CREATE TRIGGER after_members_insert
 AFTER INSERT
 ON members FOR EACH ROW
@@ -30,7 +27,6 @@ BEGIN
         VALUES(new.id,CONCAT('Hi ', NEW.name, ', please update your date of birth.'));
     END IF;
 END$$
-
 DELIMITER ;
 
 INSERT INTO members(name, email, birthDate)
@@ -40,5 +36,4 @@ VALUES
 
 
 SELECT * FROM members;    
-
 SELECT * FROM reminders;    

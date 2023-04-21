@@ -1,7 +1,6 @@
 -- BEFORE UPDATE TRIGGER
 
 DROP TABLE IF EXISTS sales;
-
 CREATE TABLE sales (
     id INT AUTO_INCREMENT,
     product VARCHAR(100) NOT NULL,
@@ -26,7 +25,6 @@ SELECT * FROM sales;
 
 --  Creating Before Update Trigger
 DELIMITER $$
-
 CREATE TRIGGER before_sales_update
 BEFORE UPDATE
 ON sales FOR EACH ROW
@@ -42,7 +40,6 @@ BEGIN
             SET MESSAGE_TEXT = errorMessage;
     END IF;
 END $$
-
 DELIMITER ;
 
 -- Updating Values
